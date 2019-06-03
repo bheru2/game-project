@@ -21,6 +21,7 @@ public class MainMenuSubScene extends SubScene {
         root.setBackground(new Background(image));
         setLayoutX(1034);
         setLayoutY(185);
+        setStyle("-fx-opacity: 0.5");
     }
 
     public void moveSubScene(){
