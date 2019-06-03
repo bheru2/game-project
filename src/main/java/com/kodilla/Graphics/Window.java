@@ -18,7 +18,9 @@ public class Window {
     private Scene mainScene;
     private Stage window;
     private List<GameButton> menuGameButtons = new ArrayList<>();
-
+    private MainMenuSubScene newGameSubScene;
+    private MainMenuSubScene helpSubScene;
+    private MainMenuSubScene settingsSubScene;
 
     public Window() {
         mainPane = new AnchorPane();
@@ -36,7 +38,7 @@ public class Window {
 
     private void addMenuButton(GameButton gameButton) {
         gameButton.setLayoutX(MENU_BUTTONS_POS_X);
-        gameButton.setLayoutY(MENU_BUTTONS_POS_Y + menuGameButtons.size() * 100);
+        gameButton.setLayoutY(MENU_BUTTONS_POS_Y + menuGameButtons.size() * 130);
         menuGameButtons.add(gameButton);
         mainPane.getChildren().add(gameButton);
     }
@@ -44,11 +46,22 @@ public class Window {
     private void createButtons() {
         GameButton newGame = new GameButton("New Game", "underType.ttf");
         addMenuButton(newGame);
-        newGame.setOnAction(e -> CloseApplication.closeProgram(window));
+        newGameSubScene = new MainMenuSubScene();
+        mainPane.getChildren().add(newGameSubScene);
+        newGame.setOnAction(e -> newGameSubScene.moveSubScene());
+
         GameButton help = new GameButton("Help", "underType.ttf");
         addMenuButton(help);
+        helpSubScene = new MainMenuSubScene();
+        mainPane.getChildren().add(helpSubScene);
+        help.setOnAction(e-> helpSubScene.moveSubScene());
+
         GameButton settings = new GameButton("Settings", "underType.ttf");
         addMenuButton(settings);
+        settingsSubScene = new MainMenuSubScene();
+        mainPane.getChildren().add(settingsSubScene);
+        settings.setOnAction(e-> settingsSubScene.moveSubScene());
+
         GameButton exit = new GameButton("Exit", "underType.ttf");
         addMenuButton(exit);
         exit.setOnAction(e -> CloseApplication.closeProgram(window));
