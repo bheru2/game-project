@@ -21,6 +21,8 @@ public class Window {
     private MainMenuSubScene newGameSubScene;
     private MainMenuSubScene helpSubScene;
     private MainMenuSubScene settingsSubScene;
+    private MainMenuSubScene sceneToHide;
+
 
     public Window() {
         mainPane = new AnchorPane();
@@ -48,23 +50,32 @@ public class Window {
         addMenuButton(newGame);
         newGameSubScene = new MainMenuSubScene();
         mainPane.getChildren().add(newGameSubScene);
-        newGame.setOnAction(e -> newGameSubScene.moveSubScene());
+        newGame.setOnAction(e -> showSubScene(newGameSubScene));
 
         GameButton help = new GameButton("Help", "underType.ttf");
         addMenuButton(help);
         helpSubScene = new MainMenuSubScene();
         mainPane.getChildren().add(helpSubScene);
-        help.setOnAction(e-> helpSubScene.moveSubScene());
+        help.setOnAction(e -> showSubScene(helpSubScene));
 
         GameButton settings = new GameButton("Settings", "underType.ttf");
         addMenuButton(settings);
         settingsSubScene = new MainMenuSubScene();
         mainPane.getChildren().add(settingsSubScene);
-        settings.setOnAction(e-> settingsSubScene.moveSubScene());
+        settings.setOnAction(e -> showSubScene(settingsSubScene));
 
         GameButton exit = new GameButton("Exit", "underType.ttf");
         addMenuButton(exit);
         exit.setOnAction(e -> CloseApplication.closeProgram(window));
+    }
+
+    private void showSubScene(MainMenuSubScene subScene) {
+        if (sceneToHide != null) {
+            sceneToHide.moveSubScene();
+        } else {
+            subScene.moveSubScene();
+            sceneToHide = subScene;
+        }
     }
 
     private void createBackground() {
