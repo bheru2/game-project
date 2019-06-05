@@ -30,6 +30,7 @@ public class Window {
         window = new Stage();
         window.setScene(mainScene);
         window.setResizable(false);
+        window.setTitle("Game");
         createButtons();
         createBackground();
     }
@@ -79,7 +80,7 @@ public class Window {
     }
 
     private void createBackground() {
-        Image backgroundImage = new Image("/backgrounds/background.main.png", WIDTH + 10, HEIGHT + 10, false, true);
+        Image backgroundImage = new Image("/backgrounds/chess.jpg", WIDTH + 10, HEIGHT + 10, false, true);
         BackgroundImage backgroundImage1 = new BackgroundImage(backgroundImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, null);
         mainPane.setBackground(new Background(backgroundImage1));
     }

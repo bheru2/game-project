@@ -3,6 +3,8 @@ package com.kodilla.Graphics;
 import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseButton;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 
 import java.io.FileInputStream;
@@ -13,9 +15,10 @@ public class GameButton extends Button {
     public GameButton(String text, String fontName) {
         setText(text);
         setButtonFont("src/main/resources/font/" + fontName);
-        setPrefWidth(190);
-        setPrefHeight(49);
-        setStyle("-fx-background-color: transparent; -fx-background-image: url('/buttons/b1.png')");
+        setPrefWidth(201);
+        setPrefHeight(56);
+        setTextFill(Color.BLACK);
+        setStyle("-fx-background-color: transparent; -fx-background-image: url('/buttons/test.png')");
         buttonOnAction();
     }
 
@@ -29,14 +32,14 @@ public class GameButton extends Button {
     }
 
     private void setButtonReleased() {
-        setStyle("-fx-background-color: transparent; -fx-background-image: url('/buttons/b1.png')");
-        setPrefHeight(45);
+        setStyle("-fx-background-color: transparent; -fx-background-image: url('/buttons/test.png')");
+        setPrefHeight(56);
         setLayoutY(getLayoutY() + 4);
     }
 
     private void setButtonPressed() {
-        setStyle("-fx-background-color: transparent; -fx-background-image: url('/buttons/b1.pressed.png')");
-        setPrefHeight(45);
+        setStyle("-fx-background-color: transparent; -fx-background-image: url('/buttons/test.png')");
+        setPrefHeight(56);
         setLayoutY(getLayoutY() - 4);
     }
 
