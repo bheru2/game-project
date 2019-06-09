@@ -22,6 +22,5 @@ public class MainApplication extends Application {
             CloseApplication.closeProgram(finalPrimaryStage);
         });
         primaryStage.show();
-
     }
 }

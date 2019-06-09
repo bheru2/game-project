@@ -4,7 +4,6 @@ import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 
 import java.io.FileInputStream;
@@ -27,32 +26,19 @@ public class GameButton extends Button {
             setFont(Font.loadFont(new FileInputStream(path), 24));
         } catch (FileNotFoundException e) {
             setFont((Font.font("Verdana", 24)));
-            System.out.println("bbb");
         }
-    }
-
-    private void setButtonReleased() {
-        setStyle("-fx-background-color: transparent; -fx-background-image: url('/buttons/test.png')");
-        setPrefHeight(56);
-        setLayoutY(getLayoutY() + 4);
-    }
-
-    private void setButtonPressed() {
-        setStyle("-fx-background-color: transparent; -fx-background-image: url('/buttons/test.png')");
-        setPrefHeight(56);
-        setLayoutY(getLayoutY() - 4);
     }
 
     private void buttonOnAction() {
         setOnMousePressed(e -> {
             if (e.getButton().equals(MouseButton.PRIMARY)) {
-                setButtonPressed();
+                setLayoutY(getLayoutY() - 4);
             }
         });
 
         setOnMouseReleased(e -> {
             if (e.getButton().equals(MouseButton.PRIMARY)) {
-                setButtonReleased();
+                setLayoutY(getLayoutY() + 4);
             }
         });
 

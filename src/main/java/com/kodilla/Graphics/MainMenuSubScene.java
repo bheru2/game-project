@@ -21,7 +21,7 @@ public class MainMenuSubScene extends SubScene {
         root.setBackground(new Background(image));
         setLayoutX(1034);
         setLayoutY(185);
-        setStyle("-fx-opacity: 0.5");
+     //   setStyle("-fx-opacity: 0.3");
     }
 
     public void moveSubScene(){
@@ -36,5 +36,9 @@ public class MainMenuSubScene extends SubScene {
             isHidden = true;
         }
         transition.play();
+    }
+
+    public AnchorPane getPane(){
+        return (AnchorPane) this.getRoot();
     }
 }

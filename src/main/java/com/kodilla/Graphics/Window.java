@@ -14,9 +14,9 @@ public class Window {
     private static final int WIDTH = 1024;
     private static final int MENU_BUTTONS_POS_X = 100;
     private static final int MENU_BUTTONS_POS_Y = 150;
-    private AnchorPane mainPane;
+    public static AnchorPane mainPane;
     private Scene mainScene;
-    private Stage window;
+    public static Stage window;
     private List<GameButton> menuGameButtons = new ArrayList<>();
     private MainMenuSubScene newGameSubScene;
     private MainMenuSubScene helpSubScene;
@@ -51,7 +51,10 @@ public class Window {
         addMenuButton(newGame);
         newGameSubScene = new MainMenuSubScene();
         mainPane.getChildren().add(newGameSubScene);
-        newGame.setOnAction(e -> showSubScene(newGameSubScene));
+        newGame.setOnAction(e -> {
+            showSubScene(NewGameScene.createNewGameSubScene());
+            //newGame.setLayoutX(350);
+        });
 
         GameButton help = new GameButton("Help", "underType.ttf");
         addMenuButton(help);
